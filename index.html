@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=My+Soul&family=Open+Sans&display=swap" rel="stylesheet">
+   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.1/dist/cdn.min.js"></script>
+   <title>FurnitureColection</title>
+   <link href="output.css" rel="stylesheet" />
+</head>
+
+<body class="max-w-[1920px] mx-auto w-full h-full bg-violet-950 text-gray-600 font-heebo">
+   <div class="container max-w-[1920px] w-full  mx-auto">
+      <div x-data="{ currentPage: 'home' }">
+
+         <nav class="fixed left-0 right-0 top-0 mx-auto w-full z-50 max-w-[1920px] bg-[#a480ed] py-2">
+            <div class="container m-auto mx-auto flex w-full max-w-[1080px] items-center justify-between text-white">
+               <img src="img/logo.png" class="ml-4" alt="">
+
+               <ul
+                  class="mr-4 hidden cursor-pointer items-center gap-6 text-[#000000] z-50 py-1 text-base font-semibold md:flex">
+                  <a href="#" @click="currentPage = 'home'" class="hover:text-red-600">Home</a>
+                  <a href="#" @click="currentPage = 'about'" class="hover:text-red-600">About</a>
+                  <a href="#" @click="currentPage = 'galery'" class="hover:text-red-600">Galery</a>
+                  <a href="#" @click="currentPage = 'blog'" class="hover:text-red-600">Blog</a>
+                  <a href="#" @click="currentPage = 'single'" class="hover:text-red-600">Single</a>
+                  <a href="#" @click="currentPage = 'contact'" class="hover:text-red-600">Contact</a>
+
+               </ul>
+
+               <button class="group mx-2 block rounded px-3 marker:z-50 py-1 bg-[#998a1c] focus:outline-none md:hidden">
+                  <div class="mb-1 h-1 w-5 bg-[#4032a8]"></div>
+                  <div class="mb-1 h-1 w-3 bg-[#4032a8]"></div>
+                  <div class="mb-1 h-1 w-5 bg-[#4032a8]"></div>
+                  <div class="mb-1 h-1 w-3 bg-[#4032a8]"></div>
+                  <div
+                     class="absolute -right-full top-12 h-screen w-full transform border bg-[#4032a8] opacity-0 transition-all duration-300 group-focus:right-0 group-focus:opacity-100">
+                     <ul
+                        class="flex w-full cursor-pointer z-50 flex-col items-center text-[#e1edeb] gap-6 py-3 text-base font-semibold">
+                        <a href="#" @click="currentPage = 'home'">Home</a>
+                        <a href="#" @click="currentPage = 'about'">About</a>
+                        <a href="#" @click="currentPage = 'galery'">Galery</a>
+                        <a href="#" @click="currentPage = 'blog'">Blog</a>
+                        <a href="#" @click="currentPage = 'single'">Single</a>
+                        <a href="#" @click="currentPage = 'contact'">Contact</a>
+
+                     </ul>
+                  </div>
+               </button>
+            </div>
+         </nav>
+         <!--! home start -->
+         <div x-show="currentPage === 'home'" class="mt-12">
+            <span x-data="{navOpen: false, scrolledFromTop: false}"
+               x-init="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false"
+               @scroll.window="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false" :class="{
+            'overflow-hidden': navOpen,
+            'overflow-scroll': !navOpen
+            }">
+               <header class="
+                  fixed
+                  max-w-[1920px]
+                  w-full
+                  bg-blue-500
+                  flex
+                  justify-between
+                  items-center
+                  px-4
+                  md:px-12
+                  transition-all
+                  duration-200
+                  h-24
+               " :class="{'h-24': !scrolledFromTop, 'h-14': scrolledFromTop}">
+               <h6 class="text-4xl text-white font-soul">Wladder</h6>
+                  <!-- <a href="#">
+                     <img
+                        src="https://res.cloudinary.com/thirus/image/upload/v1631988912/logos/chitchat-logo_pkpwwu.png"
+                        alt="ChitChat Logo" class="h-12 transform origin-left transition duration-200"
+                        :class="{'scale-100': !scrolledFromTop, 'scale-75': scrolledFromTop}" />
+                  </a> -->
+                  <nav>
+                     <button class="md:hidden" @click="navOpen = !navOpen">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none"
+                           viewBox="0 0 24 24" stroke="currentColor">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                     </button>
+                     <ul class="
+                        fixed
+                        left-0
+                        right-0
+                        min-h-screen
+                        px-4
+                        pt-8
+                        space-y-4
+                        bg-blue-500
+                        text-white
+                        transform
+                        transition
+                        duration-300
+                        translate-x-full
+                        md:relative md:flex md:space-x-10 md:min-h-0 md:px-0 md:py-0 md:space-y-0 md:translate-x-0
+                     " :class="{'translate-x-full': !navOpen}" :class="{'translate-x-0': navOpen}">
+                        <li class="">
+                           <a href="#" @click="navOpen = false">Home</a>
+                        </li>
+                        <li class="">
+                           <a href="#features" @click="navOpen = false">Features</a>
+                        </li>
+                        <li>
+                           <a href="#about" @click="navOpen = false">About</a>
+                        </li>
+                        <li>
+                           <a href="#contact" @click="navOpen = false">Contact</a>
+                        <li>
+                           <a href="#sclad" @click="navOpen = false">Sclad</a>
+                        </li>
+                        </li>
+                     </ul>
+                  </nav>
+               </header>
+               <section class="mx-auto max-w-[1920px] w-full h-full">
+                  <div class="top-0 max-w-[1920px] w-full h-full bg-cover bg-center"
+                     style="background-image: url(img/main_slider.jpg)">
+
+                     <div
+                        class="container  pt-24  max-w-[1100px] w-full h-full mx-auto justify-center grid sm:grid-cols-1 lg:grid-cols-2">
+                        <div class="flex justify-center py-12">
+                           <img src="img/group1.png" class="top-24 flex-end " alt="">
+                        </div>
+                        <div class="">
+                           <article class=" prose md:prose-xl font-black py-8 h-full">
+                              <h1 class="text-gray-600  text-center mx-auto  lg:text-left lg:mt-64 max-w-[435px]">
+                                 Furniture collection
+                              </h1>
+                              <p class="lg:text-left text-center mx-auto font-open text-sm font-bold max-w-[435px] text-gray-600">
+                                 Deep v
+                                 you probably haven't heard
+                                 of
+                                 them banh mi synth actually affogato. Aesthetic
+                                 lyft
+                                 ethical drinking vinegar austint
+                              </p>
+                           </article>
+                        </div>
+                     </div>
+                  </div>
+               </section> 
+               <section class="bg-slate-200 max-w-[1920px] w-full h-full mx-auto  py-12">
+                  <div class="@container max-w-[1920px] w-full h-full mx-auto">
+                     <h2 class="pb-4  text-3xl text-center font-extrabold mx-auto z-0  text-gray-600">
+                        Furniture new collection</h2>
+                     <div class="create-line w-[200px] border-t-2 mx-auto border-black"></div>
+                     <p class="pt-4 pb-6 text-gray-600 mx-auto text-center max-w-[730px] text-sm font-bold">Deep v you
+                        probably haven't heard of them banh mi synth actually affogato. Aesthetic lyft ethical drinking
+                        vinegar austint
+                     </p>
+                     <div
+                        class="grid justify-center xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 px-2 gap-x-4 gap-y-4">
+                        <img src="img/placeholder.png" class="w-full h-full" alt="">
+                        <img src="img/about3.png" class="w-full h-full" alt="">
+                        <img src="img/1.jpg" class="w-full h-full" alt="">
+                        <img src="img/2.jpg" class="w-full h-full" alt="">
+                        <img src="img/container.jpg" class="w-full h-full" alt="">
+                     </div>
+                  </div>
+               </section>
+         </div>
+         <!--! home end -->
+         <!--! about start -->
+         <div x-show="currentPage === 'about'" class="mt-12">
+            <span x-data="{navOpen: false, scrolledFromTop: false}"
+               x-init="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false"
+               @scroll.window="window.pageYOffset >= 50 ? scrolledFromTop = true : scrolledFromTop = false" :class="{
+            'overflow-hidden': navOpen,
+            'overflow-scroll': !navOpen
+            }">
+               <header class="
+                  fixed
+                  max-w-[1920px]
+                  w-full
+                  bg-blue-500
+                  flex
+                  justify-between
+                  items-center
+                  px-4
+                  md:px-12
+                  transition-all
+                  duration-200
+                  h-24
+               " :class="{'h-24': !scrolledFromTop, 'h-14': scrolledFromTop}">
+               <h6 class="text-4xl text-white font-soul">Wladder</h6>
+                  <!-- <a href="#">
+                     <img
+                        src="https://res.cloudinary.com/thirus/image/upload/v1631988912/logos/chitchat-logo_pkpwwu.png"
+                        alt="ChitChat Logo" class="h-12 transform origin-left transition duration-200"
+                        :class="{'scale-100': !scrolledFromTop, 'scale-75': scrolledFromTop}" />
+                  </a> -->
+                  <nav>
+                     <button class="md:hidden" @click="navOpen = !navOpen">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none"
+                           viewBox="0 0 24 24" stroke="currentColor">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                     </button>
+                     <ul class="
+                        fixed
+                        left-0
+                        right-0
+                        min-h-screen
+                        px-4
+                        pt-8
+                        space-y-4
+                        bg-blue-500
+                        text-white
+                        transform
+                        transition
+                        duration-300
+                        translate-x-full
+                        md:relative md:flex md:space-x-10 md:min-h-0 md:px-0 md:py-0 md:space-y-0 md:translate-x-0
+                     " :class="{'translate-x-full': !navOpen}" :class="{'translate-x-0': navOpen}">
+                        <li class="">
+                           <a href="#" @click="navOpen = false">Home</a>
+                        </li>
+                        <li class="">
+                           <a href="#features" @click="navOpen = false">Features</a>
+                        </li>
+                        <li>
+                           <a href="#about" @click="navOpen = false">About</a>
+                        </li>
+                        <li>
+                           <a href="#contact" @click="navOpen = false">Contact</a>
+                        <li>
+                           <a href="#sclad" @click="navOpen = false">Sclad</a>
+                        </li>
+                        </li>
+                     </ul>
+                  </nav>
+               </header>
+               <section class="pt-32 pb-16 px-8 md:px-12 bg-blue-500">
+                  <div class="max-w-7xl mx-auto md:flex md:items-center md:justify-between">
+                     <div class="md:flex-1 md:mr-6">
+                        <h1 class="font-bold text-4xl md:text-5xl text-white leading-tight">
+                           The Quickest way to Chat with your Loved Ones
+                        </h1>
+                        <p class="mt-4 text-lg text-white">
+                           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reiciendis aspernatur magni vitae
+                           veritatis.
+                        </p>
+                     </div>
+                     <div class="md:flex-1">
+                        <img src="https://res.cloudinary.com/thirus/image/upload/v1632162912/logos/chat_ys7mog.svg"
+                           alt="Chat with loved ones" />
+                     </div>
+                  </div>
+               </section>
+               <section id="features" class="min-h-screen bg-[#fc0356]"></section>
+               <section id="about" class="min-h-screen bg-gray-600"></section>
+               <section id="contact" class="min-h-screen bg-[#0b03fc]"></section>
+               <section id="sclad" class="min-h-screen bg-[#108221]"></section>
+         </div>
+      </div>
+   </div>
+
+
+</body>
+
+</html>
